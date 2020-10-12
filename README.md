@@ -1,5 +1,6 @@
 - [Vueドキュメント](https://v3.vuejs.org/guide/introduction.html#what-is-vue-js)
     - 一通り読む
+    - [しおり](https://v3.vuejs.org/guide/conditional.html#v-if)
 
 - まず一人プレイできるように作る
     - あとでグループを作れるようにする
