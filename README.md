@@ -2,6 +2,9 @@
     - 一通り読む
     - [しおり](https://v3.vuejs.org/guide/conditional.html#v-if)
 
+- 速習 Vue.js 3
+    - 一通り読んだ
+
 - まず一人プレイできるように作る
     - あとでグループを作れるようにする
 
