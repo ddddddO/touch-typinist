@@ -13,20 +13,33 @@
             data() {
                 return {
                     input: '',
-                    target: 'hello world!'
+                    targets: [
+                        'hello world!',
+                        'こんにちは',
+                        'おはよう'
+                    ]
                 }
             },
             template: `
             <div v-show="clear === false">
-                <h1>{{ target }}</h1><input type="text" v-model="input"><h1>{{ input }}</h1>
+                <h1>{{ target }}</h1>
+                <input type="text" v-model="input">
+                <h1>{{ input }}</h1>
             </div>
             <div v-show="clear === true">
                 <h1>Good!</h1>
             </div>
             `,
             computed: {
+                target() {
+                    if (this.targets[0] === this.input) {
+                        this.input = ''
+                        this.targets.shift()
+                    }
+                    return this.targets[0]
+                },
                 clear() {
-                    if (this.target === this.input) {
+                    if (this.targets.length === 0) {
                         return true
                     }
                     return false
