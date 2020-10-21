@@ -23,12 +23,12 @@
                 }
             },
             template: `
-            <div v-show="clear === false">
+            <div v-show="finished === false">
                 <h1>{{ target }}</h1>
                 <input type="text" v-model="input" v-on:click.once="startTimer">
                 <h1>{{ input }}</h1>
             </div>
-            <div v-show="clear === true">
+            <div v-show="finished === true">
                 <h1>Good!</h1>
                 <h2>result: {{ seconds }} sec</h2>
             </div>
@@ -41,7 +41,7 @@
                     }
                     return this.targets[0]
                 },
-                clear() {
+                finished() {
                     if (this.targets.length === 0) {
                         this.stopTimer()
                         return true
