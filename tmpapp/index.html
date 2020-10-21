@@ -17,17 +17,20 @@
                         'hello world!',
                         'こんにちは',
                         'おはよう'
-                    ]
+                    ],
+                    timer: null,
+                    seconds: 0
                 }
             },
             template: `
             <div v-show="clear === false">
                 <h1>{{ target }}</h1>
-                <input type="text" v-model="input">
+                <input type="text" v-model="input" v-on:click.once="startTimer">
                 <h1>{{ input }}</h1>
             </div>
             <div v-show="clear === true">
                 <h1>Good!</h1>
+                <h2>result: {{ seconds }} sec</h2>
             </div>
             `,
             computed: {
@@ -40,10 +43,20 @@
                 },
                 clear() {
                     if (this.targets.length === 0) {
+                        this.stopTimer()
                         return true
                     }
                     return false
                 }
+            },
+            methods: {
+                startTimer() {
+                    this.timer = setInterval(()=> {this.seconds++}, 1000)
+                },
+                stopTimer() {
+                    clearInterval(this.timer)
+                }
+
             }
         }
         Vue.createApp(Typinist).mount('#tmpapp')
