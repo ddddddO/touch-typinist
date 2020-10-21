@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Typinist</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <div id="tmpapp"></div>
+
+    <script>
+        const Typinist = {
+            data() {
+                return {
+                    input: '',
+                    target: 'hello world!'
+                }
+            },
+            template: `
+            <div v-show="clear === false">
+                <h1>{{ target }}</h1><input type="text" v-model="input"><h1>{{ input }}</h1>
+            </div>
+            <div v-show="clear === true">
+                <h1>Good!</h1>
+            </div>
+            `,
+            computed: {
+                clear() {
+                    if (this.target === this.input) {
+                        return true
+                    }
+                    return false
+                }
+            }
+        }
+        Vue.createApp(Typinist).mount('#tmpapp')
+    </script>
+</body>
+</html>
